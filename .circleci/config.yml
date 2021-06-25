@@ -45,10 +45,54 @@ jobs:
              name: Pushing Image to my DockerHub 
              command: |
                 docker push udapeter/udacitycapstone
-
+  
+  Kubectl:
+    docker:
+    - image: amazon/aws-cli
+    steps:
+      - checkout
+      - kubernetes/install-kubectl
+      - run:
+          name: Update Kubeconfig
+          command: |
+            ./kubeconfigupdate.sh
+      - run:
+          name: Start Blue Service 
+          command: |
+            kubectl apply -f ./Blue.json        
+      - run:
+          name: Start Green Service 
+          command: |       
+            kubectl apply -f ./Green.json
+      - run:
+          name: Redirect to Blue 
+          command: |       
+            kubectl apply -f ./BlueService.json
+  GreenDeployment:
+    docker:
+    - image: amazon/aws-cli
+    steps:
+      - checkout
+      - kubernetes/install-kubectl
+      - run:
+          name: Update Kubeconfig
+          command: |
+            ./kubeconfigupdate.sh
+      - run:
+          name: Redirect to Green
+          command: |
+            kubectl apply -f ./GreenService.json
+  
 workflows:
   default:
     jobs:
       - Lint
       - Dockerize:
           requires: [Lint]
+      - Kubectl_Apply:
+          requires: [Dockerize]
+      - GreenApproval:
+          type: approval
+          requires: [Kubectl]
+      - GreenDeployment:
+          requires: [GreenApproval]    
