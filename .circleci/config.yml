@@ -52,10 +52,7 @@ jobs:
     steps:
       - checkout
       - kubernetes/install-kubectl
-      - run:
-          name: Update Kubeconfig
-          command: |
-            ./UpdateKubeConfig.sh
+
       - run:
           name: Start Blue Service 
           command: |
