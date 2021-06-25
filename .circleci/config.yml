@@ -29,7 +29,26 @@ jobs:
             hadolint -v
             hadolint --ignore DL3006 Dockerfile
 
+Dockerize:
+    machine: true
+    steps:
+      - checkout
+      - run:
+          name: Docker Login
+          command: |
+            echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
+      - run: 
+          name: Build Image 
+          command: |
+            docker build -t udapeter/UdacityCapstone .
+      - run: 
+          name: Push Image to DockerHub 
+          command: |
+            docker push udapeter/UdacityCapstone
+
 workflows:
   default:
     jobs:
       - Lint
+      - Dockerize:
+          requires: [Lint]
