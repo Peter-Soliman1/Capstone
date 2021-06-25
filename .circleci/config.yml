@@ -11,7 +11,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: install Dependencies
+          name: installing Dependencies
           command: |
             apt-get update
             apt-get install tidy -y
@@ -20,7 +20,7 @@ jobs:
             chmod +x hadolint
             mv hadolint /bin/hadolint
       - run:
-          name: Lint HTML
+          name: Linting HTML file
           command: |
             tidy -q -e *.html
       - run:
@@ -34,7 +34,7 @@ jobs:
        steps:
          - checkout
          - run:
-             name: Docker Login
+             name: Logging in Docker HUB
              command: |
                echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_USERNAME --password-stdin
          - run: 
@@ -42,7 +42,7 @@ jobs:
              command: |
                docker build -t udapeter/udacitycapstone .
          - run: 
-             name: Push Image to DockerHub 
+             name: Pushing Image to my DockerHub 
              command: |
                 docker push udapeter/udacitycapstone
 
