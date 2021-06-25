@@ -89,7 +89,7 @@ workflows:
       - Lint
       - Dockerize:
           requires: [Lint]
-      - Kubectl_Apply:
+      - Kubectl:
           requires: [Dockerize]
       - GreenApproval:
           type: approval
