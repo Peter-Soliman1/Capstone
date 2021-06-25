@@ -55,7 +55,7 @@ jobs:
       - run:
           name: Update Kubeconfig
           command: |
-            ./kubeconfigupdate.sh
+            ./UpdateKubeConfig.sh
       - run:
           name: Start Blue Service 
           command: |
@@ -77,7 +77,7 @@ jobs:
       - run:
           name: Update Kubeconfig
           command: |
-            ./kubeconfigupdate.sh
+            ./UpdateKubeConfig.sh
       - run:
           name: Redirect to Green
           command: |
