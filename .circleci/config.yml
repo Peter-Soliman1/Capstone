@@ -40,11 +40,11 @@ jobs:
          - run: 
              name: Build Image 
              command: |
-               docker build -t udapeter/UdacityCapstone .
+               docker build -t udapeter/udacitycapstone .
          - run: 
              name: Push Image to DockerHub 
              command: |
-                docker push udapeter/UdacityCapstone
+                docker push udapeter/udacitycapstone
 
 workflows:
   default:
