@@ -1,1 +1,1 @@
-aws eks --region update-kubeconfig --name CapstoneCluster 
+aws eks us-west-2 --region update-kubeconfig --name CapstoneCluster 
