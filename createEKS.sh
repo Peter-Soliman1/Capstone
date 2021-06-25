@@ -1,6 +1,6 @@
 eksctl create cluster \
 --name CapstoneCluster \
---version 1.18 \
+--version 1.19 \
 --region us-west-2 \
 --nodegroup-name capstone-nodes \
 --node-type t2.micro \
