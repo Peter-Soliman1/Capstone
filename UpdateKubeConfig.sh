@@ -1,1 +1,1 @@
-sudo aws eks --region us-west-2 update-kubeconfig --name CapstoneCluster 
+aws eks --region update-kubeconfig --name CapstoneCluster 
