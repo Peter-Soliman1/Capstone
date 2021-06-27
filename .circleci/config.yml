@@ -56,7 +56,7 @@ jobs:
       - run:
           name: Update Kubeconfig
           command: |
-            ./UpdateKubeConfig.sh
+            aws eks --region us-west-2 update-kubeconfig --name CapstoneCluster
 
       - run:
           name: Start Blue Service 
