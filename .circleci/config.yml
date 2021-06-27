@@ -56,11 +56,13 @@ jobs:
       - run:
           name: Update Kubeconfig
           command: |
+            aws sts get-caller-identity
             aws eks --region us-west-2 update-kubeconfig --name CapstoneCluster 
 
       - run:
           name: Start Blue Service 
           command: |
+            aws sts get-caller-identity
             kubectl apply -f ./Blue.json        
       - run:
           name: Start Green Service 
