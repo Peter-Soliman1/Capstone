@@ -61,7 +61,7 @@ jobs:
       - run:
           name: Start Blue Service 
           command: |
-            kubectl apply -f ./Blue.json        
+            sudo kubectl apply -f ./Blue.json        
       - run:
           name: Start Green Service 
           command: |       
