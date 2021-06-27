@@ -56,7 +56,7 @@ jobs:
       - run:
           name: Update Kubeconfig
           command: |
-            aws eks --region us-west-2 update-kubeconfig --name CapstoneCluster --role-arn arn:aws:iam::595453282574:user/Udacity_IaC
+            aws eks --region us-west-2 update-kubeconfig --name CapstoneCluster --role-arn arn:aws:iam::595453282574:user/Capstone_User
 
       - run:
           name: Start Blue Service 
