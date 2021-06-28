@@ -90,7 +90,7 @@ jobs:
       - run:
           name: Update Kubeconfig
           command: |
-            ./UpdateKubeConfig.sh
+            aws eks update-kubeconfig  --name CapstoneCluster --region us-west-2
       - run:
           name: Redirect to Green
           command: |
